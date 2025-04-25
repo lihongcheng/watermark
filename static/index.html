@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>照片水印工具</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="text-center my-4">
+            <h1>照片水印工具</h1>
+            <p class="lead">给您的照片添加自定义水印</p>
+        </header>
+        
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">选择照片</h5>
+                        <div class="mb-3">
+                            <input type="file" class="form-control" id="imageInput" accept="image/*">
+                        </div>
+                        
+                        <h5 class="card-title mt-4">水印设置</h5>
+                        <div class="mb-3">
+                            <label for="watermarkText" class="form-label">水印文字</label>
+                            <input type="text" class="form-control" id="watermarkText" placeholder="输入水印文字">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="fontSizeRange" class="form-label">字体大小: <span id="fontSizeValue">10</span>%</label>
+                            <input type="range" class="form-range" id="fontSizeRange" min="1" max="30" value="10">
+                            <small class="text-muted">相对于图片较短边的百分比</small>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="opacityRange" class="form-label">不透明度: <span id="opacityValue">50</span>%</label>
+                            <input type="range" class="form-range" id="opacityRange" min="10" max="100" value="50">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="colorPicker" class="form-label">水印颜色</label>
+                            <input type="color" class="form-control form-control-color" id="colorPicker" value="#ffffff">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="angleRange" class="form-label">角度: <span id="angleValue">45</span>°</label>
+                            <input type="range" class="form-range" id="angleRange" min="0" max="360" value="45">
+                        </div>
+                        
+                        <div id="downloadArea" class="text-center mt-4" style="display: none;">
+                            <a id="downloadBtn" href="#" class="btn btn-success w-100" download="watermarked_image.png">下载水印图片</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-7">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">预览</h5>
+                        <div class="preview-container">
+                            <div id="imagePreview" class="image-preview">
+                                <p class="text-center text-muted">请选择一张图片</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">加载中...</span>
+        </div>
+        <p class="text-light mt-2">处理中...</p>
+    </div>
+    
+    <script src="/static/script.js"></script>
+</body>
+</html> 
